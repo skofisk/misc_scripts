@@ -32,7 +32,7 @@ $topmod=array("","0.0.0","");
 foreach ($filer as $idx => $fil) {
 	$curmod = getver($fil);
 
-	if ($topmod[0] == $curmod[0]) { // Samme mod
+	if ($topmod[0] == $curmod[0]) { // Same mod
 		if (version_compare($curmod[1], $topmod[1], '>=')) {
 			$del[] = $topmod[2];
 			//mprint($topmod, true);
@@ -41,7 +41,7 @@ foreach ($filer as $idx => $fil) {
 			$del[] = $curmod[2];
 			//mprint($curmod, true);
 		}
-	} else { // Ny mod
+	} else { // New mod
 		//if ($idx>0) $keep[] = $topmod[2];
 		//if ($idx>0) mprint($topmod);
 		$topmod = $curmod;
@@ -63,11 +63,11 @@ foreach ($res as $slett) {
 	}
 }
 if ($bytes == 0){
-	mprint("Ingenting å gjøre",true);
+	mprint("Nothing to do",true);
 	exit(0);
 }
 
-mprint(sprintf("%s brukt", human_filesize($bytes)));
+mprint(sprintf("%s used", human_filesize($bytes)));
 
 $confirm = readline("Delete? [y/N]");
 if (strtolower($confirm) == "y") {
@@ -79,9 +79,9 @@ if (strtolower($confirm) == "y") {
 			unlink($f);
 		}
 	}
-	mprint(sprintf("%s diskplass frigjort", human_filesize($bytes)));
+	mprint(sprintf("%s freed", human_filesize($bytes)));
 } else {
-	mprint("Ingenting å gjøre",true);
+	mprint("Nothing to do",true);
 }
 
 
